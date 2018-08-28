@@ -22,9 +22,10 @@ class PersonTest extends TestCase
             [
                 'name' => 'Johnny',
                 'weight' => '60',
-                'height' => '1.72',
+                'height' => '172.6',
             ]
         );
+        $response->assertStatus(200);
     }
 
     public function testPersonView()
