@@ -2,12 +2,28 @@
 
 namespace Tests\Feature\Route;
 
+use Mockery;
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
 class PersonTest extends TestCase
 {
+
+    protected $personMock;
+
+    public function setUp()
+    {
+        parent::setUp();
+        $this->personMock = Mockery::mock('App\Models\Person');
+    }
+
+    public function tearDown()
+    {
+        parent::tearDown();
+        Mockery::close();
+    }
+
     public function testPersonList()
     {
         $response = $this->json('GET', 'api/person');
