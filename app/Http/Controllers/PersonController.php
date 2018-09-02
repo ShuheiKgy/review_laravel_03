@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\PersonCollection;
 use App\Models\Person;
 use Illuminate\Http\Request;
 
@@ -12,9 +13,9 @@ class PersonController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Person $person)
     {
-        //
+        return new PersonCollection($person->all());
     }
 
     /**
