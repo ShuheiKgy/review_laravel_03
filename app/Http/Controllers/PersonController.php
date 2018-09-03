@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Resources\PersonCollection;
+use App\Http\Resources\PersonResource;
 use App\Models\Person;
 use Illuminate\Http\Request;
 
@@ -11,7 +12,8 @@ class PersonController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @param Person $person
+     * @return PersonCollection|\Illuminate\Http\Response
      */
     public function index(Person $person)
     {
@@ -31,12 +33,21 @@ class PersonController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @param Person $person
+     * @param  \Illuminate\Http\Request $request
+     * @return PersonResource
      */
-    public function store(Request $request)
+    public function store(Person $person, Request $request)
     {
-        //
+        $p = $person->create(
+            [
+                'name' => $request->input('name'),
+                'height' => $request->input('height'),
+                'weight' => $request->input('weight'),
+            ]
+        );
+
+        return new PersonResource($p);
     }
 
     /**
