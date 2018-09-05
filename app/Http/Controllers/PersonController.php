@@ -104,11 +104,13 @@ class PersonController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Person  $person
-     * @return \Illuminate\Http\Response
+     * @param  \App\Models\Person $person
+     * @return PersonResource
+     * @throws \Exception
      */
     public function destroy(Person $person)
     {
-        //
+        $person->delete();
+        return new PersonResource($person);
     }
 }
