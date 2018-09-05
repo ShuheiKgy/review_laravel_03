@@ -75,13 +75,30 @@ class PersonController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Person  $person
-     * @return \Illuminate\Http\Response
+     * @param  \Illuminate\Http\Request $request
+     * @param  \App\Models\Person $person
+     * @return PersonResource
      */
     public function update(Request $request, Person $person)
     {
-        //
+        $isUpdated = false;
+        if ($request->input('name')) {
+            $person->name = $request->input('name');
+            $isUpdated = true;
+        }
+        if ($request->input('height')) {
+            $person->height = $request->input('height');
+            $isUpdated = true;
+        }
+        if ($request->input('weight')) {
+            $person->weight = $request->input('weight');
+            $isUpdated = true;
+        }
+
+        if ($isUpdated) {
+            $person->save();
+        }
+        return new PersonResource($person);
     }
 
     /**
