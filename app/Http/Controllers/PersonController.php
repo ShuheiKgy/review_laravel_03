@@ -53,8 +53,8 @@ class PersonController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Person  $person
-     * @return \Illuminate\Http\Response
+     * @param  \App\Models\Person $person
+     * @return PersonResource
      */
     public function show(Person $person)
     {
