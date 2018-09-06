@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreRequest;
 use App\Http\Resources\PersonCollection;
 use App\Http\Resources\PersonResource;
 use App\Models\Person;
@@ -34,10 +35,10 @@ class PersonController extends Controller
      * Store a newly created resource in storage.
      *
      * @param Person $person
-     * @param  \Illuminate\Http\Request $request
+     * @param StoreRequest $request
      * @return PersonResource
      */
-    public function store(Person $person, Request $request)
+    public function store(Person $person, StoreRequest $request)
     {
         $p = $person->create(
             [
