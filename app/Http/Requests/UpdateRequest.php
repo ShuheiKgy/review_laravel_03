@@ -25,8 +25,8 @@ class UpdateRequest extends FormRequest
     {
         return [
             'name' => 'required|max:255',
-            'weight' => 'required|min:0.1',
             'height' => 'required|min:0.1',
+            'weight' => 'required|min:0.1',
         ];
     }
 }
