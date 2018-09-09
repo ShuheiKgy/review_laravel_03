@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreRequest;
+use App\Http\Requests\UpdateRequest;
 use App\Http\Resources\PersonCollection;
 use App\Http\Resources\PersonResource;
 use App\Models\Person;
@@ -76,11 +77,11 @@ class PersonController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request $request
+     * @param UpdateRequest $request
      * @param  \App\Models\Person $person
      * @return PersonResource
      */
-    public function update(Request $request, Person $person)
+    public function update(UpdateRequest $request, Person $person)
     {
         $isUpdated = false;
         if ($request->input('name')) {
