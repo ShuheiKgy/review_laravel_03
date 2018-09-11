@@ -5,8 +5,6 @@ namespace Tests\Unit\Services;
 use App\Models\Person;
 use App\Services\BmiService;
 use Tests\TestCase;
-use Illuminate\Foundation\Testing\WithFaker;
-use Illuminate\Foundation\Testing\RefreshDatabase;
 
 class BmiServiceTest extends TestCase
 {
@@ -14,7 +12,7 @@ class BmiServiceTest extends TestCase
      * @param $height
      * @param $weight
      * @param $result
-     * @throws ReflectionException
+     * @throws \ReflectionException
      * @dataProvider bmiDataProvider
      */
     public function testCalcBmi($height, $weight, $result)
